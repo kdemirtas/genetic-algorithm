@@ -1,21 +1,48 @@
 import os
 import unittest
-import json
+
+from genetic_algorithm.chromosome import Chromosome
 
 
-class TestInitializer(unittest.TestCase):
+class TestChromosome(unittest.TestCase):
 
     def setUp(self):
-        self.ds = directory.DirectoryStructure()
-        self.test_data_file = os.path.join(self.ds.test_data_dir, 'input_data_3_checkpoints.json')
-        self.ini = initializer.Initializer(self.test_data_file)
+        pass
 
     def tearDown(self):
         pass
 
-    def test_chromosome(self):
-        pass
+    def test_chromosome_source_none_for_empty_chromosome(self):
+        c = Chromosome()
+        self.assertIsNone(c.source)
 
+    def test_chromosome_set_source_correct(self):
+        c = Chromosome()
+
+        c.source = "initial_population"
+        self.assertEqual(c.source, "initial_population")
+        c.source = "crossover"
+        self.assertEqual(c.source, "crossover")
+        c.source = "mutation"
+        self.assertEqual(c.source, "mutation")
+        c.source = "repair"
+        self.assertEqual(c.source, "repair")
+
+    def test_chromosome_set_unsupported_source(self):
+        c = Chromosome()
+
+        with self.assertRaises(ValueError):
+            c.source = "unsupported_source"
+
+    def test_chromosome_set_generation_correct(self):
+        c = Chromosome()
+        c.generation = 7
+        self.assertEqual(c.generation, 7)
+
+    def test_chromosome_set_generation_unsupported(self):
+        c = Chromosome()
+        with self.assertRaises(ValueError):
+            c.generation = 3.14
 
 
 if __name__ == "__main__":
