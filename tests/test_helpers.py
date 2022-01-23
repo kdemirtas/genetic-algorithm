@@ -36,11 +36,24 @@ class TestHelpers(unittest.TestCase):
             hp.ensure_np_array(pstring)
         with self.assertRaises(TypeError):
             hp.ensure_np_array(pint)
+
+    def test_helpers_enure_np_array_for_2d_list(self):
+        plist = [[1, 2], [3, 4], [5, 6]]
+        nparr = hp.ensure_np_array(plist)
+        nrows = len(plist)
+        ncols = len(plist[0])
+        shape = tuple([nrows, ncols])
+        self.assertEqual(shape, nparr.shape)
+
+    def test_helpers_enure_np_array_for_3d_list(self):
+        plist = [[[1, 2], [3, 4], [5, 6]], [[7, 8], [9, 10], [11, 12]]]
+        nparr = hp.ensure_np_array(plist)
+        n1st = len(plist)
+        n2nd = len(plist[0])
+        n3rd = len(plist[0][0])
+        shape = tuple([n1st, n2nd, n3rd])
+        self.assertEqual(shape, nparr.shape)
         
-
-
-    
-
 
 if __name__ == "__main__":
     unittest.main()
