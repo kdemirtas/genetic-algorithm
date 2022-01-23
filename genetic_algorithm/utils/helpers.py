@@ -10,6 +10,13 @@ def ensure_np_array(arr):
     Returns:
         nparr -> Numpy array
     """
-    nparr = None
+    if isinstance(arr, np.ndarray):
+        nparr = arr
+    elif isinstance(arr, list):
+        nparr = np.array(arr)
+    elif isinstance(arr, tuple):
+        nparr = np.array(arr)
+    else:
+        raise(TypeError("Unsupported type for numpy array"))
 
     return nparr
