@@ -1,7 +1,9 @@
 import numpy as np
 
+from genetic_algorithm.classes.base_classes import ChromosomeBase
 
-class Chromosome:
+
+class Chromosome(ChromosomeBase):
     """
     Chromosome class. A chromosome represents an individual solution
     within the solution space.
@@ -40,19 +42,6 @@ class Chromosome:
             raise(ValueError("Source {} is not a supported type".format(value)))
         
         self._source = value
-
-
-    def crossover(self, other):
-        """
-        Takes an other chromosome and performs a crossover with it.
-        Args:
-            other -> Chromosome instance
-        Returns:
-            children -> Numpy array of children containing two new chromosome instances
-        """
-        children = np.array([])
-
-        return children
 
     def mutate(self):
         """

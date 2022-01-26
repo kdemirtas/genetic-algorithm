@@ -33,7 +33,7 @@ class TestOperators(unittest.TestCase):
         children_genes_expected = np.array([child1_gen, child2_gen])
         self.assertTrue(np.array_equal(children_genes, children_genes_expected))
 
-    def test_operators_crossover_calls_uniform_correct(self):
+    def test_operators_crossover_calls_single_point_correct(self):
         pass
 
     def test_operators_crossover_uniform(self):

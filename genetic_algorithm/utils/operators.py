@@ -3,20 +3,39 @@ import numpy as np
 from copy import deepcopy as dcp
 
 from genetic_algorithm.utils.helpers import ensure_np_array
-
-
-class OperatorBase(ABC):
-    
-    @abstractmethod
-    def crossover(self):
-        pass
-
-    @abstractmethod
-    def mutate(self):
-        pass
+from genetic_algorithm.classes.base_classes import *
 
 
 class Operator(OperatorBase):
+    def __init__(self):
+        self._n_crossover = 0
+        self._n_mutation = 0
+        self._n_repair = 0
+
+    @property
+    def n_crossover(self):
+        return _n_crossover
+
+    @n_crossover.setter
+    def n_crossover(self, value):
+        self._n_crossover = value
+
+    @property
+    def n_mutation(self):
+        return _n_mutation
+
+    @n_mutation.setter
+    def n_mutation(self, value):
+        self._n_mutation = value
+
+    @property
+    def n_repair(self):
+        return _n_repair
+
+    @n_repair.setter
+    def n_repair(self, value):
+        self._n_repair = value
+
     def crossover(self, chromosomes, crossover_type, args={}):
         """
         Takes a numpy array of two chromosome instances and performs a crossover operation between them.
@@ -35,6 +54,26 @@ class Operator(OperatorBase):
             
             children = _uniform_crossover(chromosomes, cutoff)
         
+        return children
+
+    def _single_point_crossover(self, chromosomes, cutoff):
+        chromosome1, chromosome2 = chromosomes[0], chromosomes[1]
+        length = len(chromosome1.genotype)
+        cutoff_idx = int(length * cutoff)
+
+        gen1 = chromosome1.genotype
+        gen2 = chromosome2.genotype
+
+        hold1 = dcp(gen1[cutoff_idx:])
+        hold2 = dcp(gen2[cutoff_idx:])
+        gen1[cutoff_idx:] = hold2
+        gen2[cutoff_idx:] = hold1
+
+        chromosome1.genotype = gen1
+        chromosome2.genotype = gen2
+
+        children = ensure_np_array([chromosome1, chromosome2])
+
         return children
 
     def _uniform_crossover(self, chromosomes, cutoff):
@@ -58,4 +97,7 @@ class Operator(OperatorBase):
         return children
 
     def mutate(self):
+        pass
+
+    def evaluate(self):
         pass
