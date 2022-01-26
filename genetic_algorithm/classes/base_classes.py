@@ -22,3 +22,8 @@ class ChromosomeBase(ABC):
     @abstractmethod
     def generation(self):
         pass
+
+class SolverBase(ABC):
+    @abstractmethod
+    def solve(self):
+        pass
