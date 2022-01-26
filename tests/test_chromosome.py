@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from genetic_algorithm.chromosome import Chromosome
+from genetic_algorithm.classes.chromosome import Chromosome
 
 
 class TestChromosome(unittest.TestCase):

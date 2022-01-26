@@ -6,9 +6,10 @@ class Chromosome:
     Chromosome class. A chromosome represents an individual solution
     within the solution space.
     """
-    def __init__(self):
+    def __init__(self, genotype=None):
         self._source = None
         self._generation = None
+        self.genotype = genotype
 
     def __repr__(self):
         # User-friendly display of the chromosome
