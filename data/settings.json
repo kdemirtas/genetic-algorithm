@@ -1,0 +1,12 @@
+{
+    "verbose": 2,
+    "visuals": true,
+    "debug": false,
+    "output_to_file": true,
+    "ga_settings": {
+        "population_size": 100,
+        "max_generations": 10000,
+        "max_generations_without_improvement": 1000,
+        "p_mutation": 0.01
+    }
+}

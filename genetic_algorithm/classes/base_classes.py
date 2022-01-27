@@ -14,6 +14,7 @@ class OperatorBase(ABC):
     def evaluate(self):
         pass
 
+
 class ChromosomeBase(ABC):
     @abstractmethod
     def source(self):
@@ -22,6 +23,13 @@ class ChromosomeBase(ABC):
     @abstractmethod
     def generation(self):
         pass
+
+
+class PopulationBase(ABC):
+    @abstractmethod
+    def generation(self):
+        pass
+
 
 class SolverBase(ABC):
     @abstractmethod
