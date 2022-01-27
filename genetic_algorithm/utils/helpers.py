@@ -1,3 +1,5 @@
+import json
+
 import numpy as np
 
 
@@ -20,3 +22,12 @@ def ensure_np_array(arr):
         raise(TypeError("Unsupported type for numpy array"))
 
     return nparr
+
+def json_parser(file_path):
+    extension = file_path.split('.')
+    if extension[1] != 'json':
+        raise(TypeError('Input file does not have .json extension.'))
+    with open(file_path) as fp:
+        parse_result = json.load(fp)
+
+    return parse_result

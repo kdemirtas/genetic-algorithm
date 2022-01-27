@@ -3,6 +3,7 @@
     "visuals": true,
     "debug": false,
     "output_to_file": true,
+    "test_check_num": 777,
     "ga_settings": {
         "population_size": 100,
         "max_generations": 10000,

@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from genetic_algorithm.utils.directory_structure import DirectoryStructure as ds
+from genetic_algorithm.classes.directory_structure import DirectoryStructure as ds
 
 class TestDirectoryStructure(unittest.TestCase):
 
